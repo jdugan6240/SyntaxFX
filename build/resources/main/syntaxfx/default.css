@@ -1,0 +1,29 @@
+.keyword {
+    -fx-fill: purple;
+    -fx-font-weight: bold;
+}
+.keyword2 {
+    -fx-fill: blue;
+}
+.identifier {
+    -fx-fill: black;
+}
+.string {
+    -fx-fill: darkorange;
+}
+.comment {
+	-fx-fill: green;
+}
+.doc_comment {
+    -fx-fill: cyan;
+}
+.type {
+    -fx-fill: blue;
+    -fx-font-weight: bold;
+}
+.number {
+    -fx-fill: red;
+}
+.paragraph-box:has-caret {
+    -fx-background-color: #f2f9fc;
+}
