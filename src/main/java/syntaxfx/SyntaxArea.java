@@ -3,8 +3,6 @@ package syntaxfx;
 import java.time.Duration;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
@@ -15,29 +13,6 @@ import org.reactfx.Subscription;
 import syntaxfx.lexers.JavaLexer;
 
 public class SyntaxArea extends CodeArea {
-
-    private static final String sampleCode = String.join("\n", new String[] {
-            "package com.example;",
-            "",
-            "import java.util.*;",
-            "",
-            "public class Foo extends Bar implements Baz {",
-            "",
-            "    /*",
-            "     * multi-line comment",
-            "     */",
-            "    public static void main(String[] args) {",
-            "        // single-line comment",
-            "        for(String arg: args) {",
-            "            if(arg.length() != 0)",
-            "                System.out.println(arg);",
-            "            else",
-            "                System.err.println(\"Warning: empty string as argument\");",
-            "        }",
-            "    }",
-            "",
-            "}"
-    });
 
     protected Lexer lexer;
 
@@ -52,9 +27,6 @@ public class SyntaxArea extends CodeArea {
 
         //Use a JavaLexer by default
         lexer = new JavaLexer();
-
-        //TODO: Move this to the demo.
-        replaceText(0, 0, sampleCode);
     }
 
     public void setLexer(Lexer lexer) {
