@@ -10,6 +10,9 @@ class JavaLexer extends Lexer {
     //Supported states
     val INITIAL_STATE : Int = 0
     val KEYWORD : Int = 1
+    val STRING : Int = 2
+    val CHAR : Int = 3
+    val COMMENT : Int = 4
 
     //Keep track of the current state
     var currentState : Int = INITIAL_STATE
@@ -20,6 +23,8 @@ class JavaLexer extends Lexer {
     //The string to be lexed
     var str : String = ""
 
+    //Keeps track of how many backslashes have been found - used in strings to detect escaped characters
+    var numSlashes : Int = 0
 
     override def setString(str : String) : Unit = {
         //Reset the string and all the lexing variables
@@ -90,6 +95,12 @@ class JavaLexer extends Lexer {
                     tok = handleInitialState
                 case KEYWORD =>
                     tok = handleKeyword
+                case STRING =>
+                    tok = handleString
+                case CHAR =>
+                    tok = handleChar
+                case COMMENT =>
+                    tok = handleComment
             }
             //If a token was indeed found
             if (tok != null) {
@@ -114,6 +125,27 @@ class JavaLexer extends Lexer {
             currentState = KEYWORD
             return tok
         }
+        //If we have found the beginning of a string
+        if (str.charAt(currentIndex) == '"') {
+            var tok : Token = new Token(Token.OTHER, stateStart, currentIndex)
+            stateStart = currentIndex
+            currentState = STRING
+            return tok
+        }
+        //If we have found the beginning of a char literal
+        if (str.charAt(currentIndex) == '\'') {
+            var tok : Token = new Token(Token.OTHER, stateStart, currentIndex)
+            stateStart = currentIndex
+            currentState = CHAR
+            return tok
+        }
+        //If we have found the beginning of a single-line comment
+        if (str.charAt(currentIndex) == '/' && str.charAt(currentIndex - 1) == '/') {
+            var tok : Token = new Token(Token.OTHER, stateStart, currentIndex - 1)
+            stateStart = currentIndex - 1
+            currentState = COMMENT
+            return tok
+        }
         //None of the above conditions apply - return null
         return null
     }
@@ -130,4 +162,83 @@ class JavaLexer extends Lexer {
         //None of the above conditions apply - return null
         return null
     }
+
+    //Handle the STRING state
+    def handleString() : Token = {
+        //If we have found a backslash
+        if (str.charAt(currentIndex) == '\\') {
+            numSlashes += 1
+            if (numSlashes == 2) numSlashes = 0 //2 backslashes equals an escaped backslash
+        }
+        //Anything else
+        else {
+            numSlashes = 0
+        }
+        //If we have found a newline character, bail out of the string state
+        if (str.charAt(currentIndex) == '\n') {
+            var tok : Token = new Token(Token.OTHER, stateStart, currentIndex)
+            stateStart = currentIndex + 1
+            currentState = INITIAL_STATE
+            return tok
+        }
+        //If we found the end of the string and it's not escaped
+        if (str.charAt(currentIndex) == '"' && numSlashes == 0) {
+            var tok : Token = new Token(Token.STRING, stateStart, currentIndex + 1)
+            stateStart = currentIndex + 1
+            currentState = INITIAL_STATE
+            return tok
+        }
+        //None of the above conditions apply - return null
+        return null
+    }
+
+    //Handle the CHAR state
+    def handleChar() : Token = {
+        //If we have found a backslash
+        if (str.charAt(currentIndex) == '\\') {
+            numSlashes += 1
+            if (numSlashes == 2) numSlashes = 0 //2 backslashes equals an escaped backslash
+        }
+        //Anything else
+        else {
+            numSlashes = 0
+        }
+        //If we have found a newline character, bail out of the string state
+        if (str.charAt(currentIndex) == '\n') {
+            var tok : Token = new Token(Token.OTHER, stateStart, currentIndex)
+            stateStart = currentIndex + 1
+            currentState = INITIAL_STATE
+            return tok
+        }
+        //If we found the end of the char literal and it's not escaped
+        if (str.charAt(currentIndex) == '\'' && numSlashes == 0) {
+            var tok : Token = new Token(Token.STRING, stateStart, currentIndex + 1)
+            stateStart = currentIndex + 1
+            currentState = INITIAL_STATE
+            return tok
+        }
+        //None of the above conditions apply - return null
+        return null
+    }
+
+    //Handle the COMMENT state
+    def handleComment() : Token = {
+        //If we found a newline character, exit the comment
+        if (str.charAt(currentIndex) == '\n') {
+            var tok : Token = new Token(Token.COMMENT, stateStart, currentIndex)
+            stateStart = currentIndex + 1
+            currentState = INITIAL_STATE
+            return tok
+        }
+        //If this character is the end of the string, exit the comment
+        if (currentIndex == str.length() - 1) {
+            var tok : Token = new Token(Token.COMMENT, stateStart, currentIndex)
+            stateStart = currentIndex + 1
+            currentState = INITIAL_STATE
+            return tok
+        }
+        //None of the above conditions apply - return null
+        return null
+    }
+
 }
