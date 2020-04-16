@@ -13,9 +13,16 @@
 }
 .comment {
 	-fx-fill: green;
+    -fx-font-style: italic;
 }
 .doc_comment {
-    -fx-fill: cyan;
+    -fx-fill: #00CCCC;
+    -fx-font-style: italic;
+}
+.doc_comment_tag {
+    -fx-fill: darkcyan;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
 }
 .type {
     -fx-fill: blue;
@@ -23,6 +30,10 @@
 }
 .number {
     -fx-fill: red;
+}
+.operator {
+    -fx-fill: darkblue;
+    -fx-font-weight: bold;
 }
 .paragraph-box:has-caret {
     -fx-background-color: #f2f9fc;

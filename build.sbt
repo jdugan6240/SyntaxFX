@@ -17,3 +17,5 @@ libraryDependencies += "org.openjfx" % "javafx-media" % "11-ea+25" classifier os
 libraryDependencies += "org.fxmisc.richtext" % "richtextfx" % "0.10.4"
 
 mainClass in (Compile, run) := Some("syntaxfx.Demo")
+
+jflexOutputDirectory := baseDirectory.value / "src/main/scala/syntaxfx/lexers"

@@ -15,6 +15,10 @@ object Demo {
         "" + "\n" +     
         "import java.util.*;" + "\n" +
         "" + "\n" +
+        "/**" + "\n" +
+        " * This is an example Java class." + "\n" +
+        " * @author John Doe" + "\n" +
+        " */" + "\n" +
         "public class Foo extends Bar implements Baz {" + "\n" +
         "" + "\n" +
         "    /*" + "\n" +

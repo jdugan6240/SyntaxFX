@@ -40,19 +40,24 @@ object Token {
     val DOC_COMMENT: Int = 6
 
     /**
+     * This type represents a tag or annotation within a documentation comment.
+     */
+    val DOC_COMMENT_TAG : Int = 7
+
+    /**
      * This type represents a built-in type supported by the language (usually not keywords).
      */
-    val TYPE: Int = 7
+    val TYPE: Int = 8
 
     /**
      * This type represents a numeric constant.
      */
-    val NUMBER: Int = 8
+    val NUMBER: Int = 9
 
     /**
      * This type represents a token type that is unrecognized by the lexer.
      */
-    val OTHER: Int = 9
+    val OTHER: Int = 10
 }
 
 /**

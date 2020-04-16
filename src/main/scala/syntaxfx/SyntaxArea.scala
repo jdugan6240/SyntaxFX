@@ -61,6 +61,7 @@ class SyntaxArea extends CodeArea {
                 case Token.STRING => styleClass = "string"
                 case Token.COMMENT => styleClass = "comment"
                 case Token.DOC_COMMENT => styleClass = "doc_comment"
+                case Token.DOC_COMMENT_TAG => styleClass = "doc_comment_tag"
                 case Token.TYPE => styleClass = "type"
                 case Token.NUMBER => styleClass = "number"
                 case Token.OTHER => styleClass = "other"
@@ -68,7 +69,8 @@ class SyntaxArea extends CodeArea {
 
             }
             //First, make the style of any non-tokenized text before this token plain
-            spansBuilder.add(Collections.emptyList(), tok.start - lastTokenEnd)
+            if (tok.start - lastTokenEnd > 0)
+              spansBuilder.add(Collections.emptyList(), tok.start - lastTokenEnd)
             //Stylize the text in the current token
             spansBuilder.add(Collections.singleton(styleClass), tok.length)
             lastTokenEnd = tok.end
@@ -76,44 +78,11 @@ class SyntaxArea extends CodeArea {
             tok = lexer.getNextToken
         }
         //Make the style of any remaining text plain
-        spansBuilder.add(Collections.emptyList(), text.length - lastTokenEnd)
+        //if (text.length - lastTokenEnd > 0)
+        //    spansBuilder.add(Collections.emptyList(), text.length - lastTokenEnd)
         spansBuilder.create()
     }
 
-
-    private class StyleDaemon(codeEditor: SyntaxArea, sleepDuration: Int) extends Thread {
-        setDaemon(true);
-
-        override def run(): Unit = {
-            var text : String = ""
-            var latestStyledText : String = ""
-
-            while (true) {
-                Platform.runLater(new Runnable {
-                    def run() {
-                        text = codeEditor.getText()
-                    }
-                })
-                if (text != latestStyledText) {
-                    val styleSpans = computeHighlighting(text)
-                    Platform.runLater(new Runnable {
-                      //this is a test
-                        def run() {
-                          
-                            try {
-                                codeEditor.setStyleSpans(0, styleSpans)
-                                latestStyledText = text
-                            } catch {
-                                case _: Exception =>
-                                  //Do nothing
-                            }
-                        }
-                    })
-                }
-                Thread.sleep(sleepDuration)
-            }
-        }
-    }
 }
 
 
