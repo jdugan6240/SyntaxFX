@@ -4,6 +4,8 @@ bin/*
 .classpath
 .project
 
+.gradle/*
+
 dist/*
 target/
 lib_managed/

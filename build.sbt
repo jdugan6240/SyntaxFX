@@ -7,15 +7,11 @@ osName := (System.getProperty("os.name") match {
   case _ => throw new Exception("Unknown platform!")
 })
 
-libraryDependencies += "org.openjfx" % "javafx-base" % "11-ea+25" classifier osName.value
-libraryDependencies += "org.openjfx" % "javafx-controls" % "11-ea+25" classifier osName.value
-libraryDependencies += "org.openjfx" % "javafx-fxml" % "11-ea+25" classifier osName.value
-libraryDependencies += "org.openjfx" % "javafx-graphics" % "11-ea+25" classifier osName.value
-libraryDependencies += "org.openjfx" % "javafx-web" % "11-ea+25" classifier osName.value
-libraryDependencies += "org.openjfx" % "javafx-media" % "11-ea+25" classifier osName.value
+libraryDependencies += "org.openjfx" % "javafx-base" % "15-ea+3"
+libraryDependencies += "org.openjfx" % "javafx-controls" % "15-ea+3"
 
 libraryDependencies += "org.fxmisc.richtext" % "richtextfx" % "0.10.4"
 
-mainClass in (Compile, run) := Some("syntaxfx.Demo")
+mainClass in (Compile, run) := Some("syntaxfx.demo.Demo")
 
 jflexOutputDirectory := baseDirectory.value / "src/main/scala/syntaxfx/lexers"
