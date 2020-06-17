@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+   version = "11.0.2"
+   modules = ['javafx.base', 'javafx.controls']
+}
+
+dependencies {
+    compile group: 'org.fxmisc.richtext', name: 'richtextfx', version: '0.10.5'
+}
+
+mainClassName = "syntaxfx.demo.Demo"

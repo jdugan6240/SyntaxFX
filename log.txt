@@ -1,0 +1,314 @@
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:106: error: class, interface, or enum expected
+    Token createKeyword() { return new Token(Token.KEYWORD, matchStart, matchEnd); }
+    ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:106: error: class, interface, or enum expected
+    Token createKeyword() { return new Token(Token.KEYWORD, matchStart, matchEnd); }
+                                                                                   ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:109: error: class, interface, or enum expected
+    Token createKeyword2() { return new Token(Token.KEYWORD2, matchStart, matchEnd); }
+                                                                                     ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:112: error: class, interface, or enum expected
+    Token createOperator() { return new Token(Token.OPERATOR, matchStart, matchEnd); }
+                                                                                     ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:115: error: class, interface, or enum expected
+    Token other() { return new Token(Token.OTHER, matchStart, matchEnd); }
+                                                                         ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:151: error: class, interface, or enum expected
+    private static final byte[] CHARACTER_MAP = createCharacterMap(
+                         ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:161: error: class, interface, or enum expected
+    private static final short[][] TRANSITION_TABLE = createTransitionTable(
+                         ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:203: error: class, interface, or enum expected
+    private static final byte[] ACTION_MAP = createActionMap(
+                         ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:217: error: class, interface, or enum expected
+    private static final int LEXICAL_STATE_COMMENT = 0;
+                         ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:222: error: class, interface, or enum expected
+    private static final int LEXICAL_STATE_DOCTAG = 1;
+                         ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:227: error: class, interface, or enum expected
+    private static final int LEXICAL_STATE_DOC = 2;
+                         ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:232: error: class, interface, or enum expected
+    private static final int LEXICAL_STATE_INITIAL = 3;
+                         ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:241: error: class, interface, or enum expected
+    private String string = "";
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:250: error: class, interface, or enum expected
+    private int regionEnd;
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:259: error: class, interface, or enum expected
+    private int dot;
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:268: error: class, interface, or enum expected
+    private int lexicalState = LEXICAL_STATE_INITIAL;
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:277: error: class, interface, or enum expected
+    private int matchStart;
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:282: error: class, interface, or enum expected
+    private int matchEnd;
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:291: error: class, interface, or enum expected
+    private int startState = 21;
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:303: error: class, interface, or enum expected
+    private static byte[] createCharacterMap(String characterMapData) {
+                   ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:305: error: class, interface, or enum expected
+        int length = characterMapData.length();
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:306: error: class, interface, or enum expected
+        int i = 0;
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:307: error: class, interface, or enum expected
+        int j = 0;
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:309: error: class, interface, or enum expected
+        while (i < length) {
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:312: error: class, interface, or enum expected
+            for (int x=characterMapData.charAt(i++);x>0;x--) {
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:312: error: class, interface, or enum expected
+            for (int x=characterMapData.charAt(i++);x>0;x--) {
+                                                    ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:312: error: class, interface, or enum expected
+            for (int x=characterMapData.charAt(i++);x>0;x--) {
+                                                        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:314: error: class, interface, or enum expected
+            }
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:318: error: class, interface, or enum expected
+    }
+    ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:328: error: class, interface, or enum expected
+        int length = transitionTableData.length();
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:329: error: class, interface, or enum expected
+        int i = 0;
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:330: error: class, interface, or enum expected
+        int j = 0;
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:331: error: class, interface, or enum expected
+        int k = 0;
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:333: error: class, interface, or enum expected
+        while (i < length) {
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:336: error: class, interface, or enum expected
+            for (int x=transitionTableData.charAt(i++);x>0;x--) {
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:336: error: class, interface, or enum expected
+            for (int x=transitionTableData.charAt(i++);x>0;x--) {
+                                                       ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:336: error: class, interface, or enum expected
+            for (int x=transitionTableData.charAt(i++);x>0;x--) {
+                                                           ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:338: error: class, interface, or enum expected
+            }
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:342: error: class, interface, or enum expected
+                j++;
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:343: error: class, interface, or enum expected
+            }
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:347: error: class, interface, or enum expected
+    }
+    ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:357: error: class, interface, or enum expected
+        int length = actionMapData.length();
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:358: error: class, interface, or enum expected
+        int i = 0;
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:359: error: class, interface, or enum expected
+        int j = 0;
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:361: error: class, interface, or enum expected
+        while (i < length) {
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:364: error: class, interface, or enum expected
+            for (int x=actionMapData.charAt(i++);x>0;x--) {
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:364: error: class, interface, or enum expected
+            for (int x=actionMapData.charAt(i++);x>0;x--) {
+                                                 ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:364: error: class, interface, or enum expected
+            for (int x=actionMapData.charAt(i++);x>0;x--) {
+                                                     ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:366: error: class, interface, or enum expected
+            }
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:370: error: class, interface, or enum expected
+    }
+    ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:382: error: class, interface, or enum expected
+    public void setStringInternal(String string) {
+           ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:385: error: class, interface, or enum expected
+        regionEnd = this.string.length();
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:387: error: class, interface, or enum expected
+        dot = 0;
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:388: error: class, interface, or enum expected
+        lexicalState = LEXICAL_STATE_INITIAL;
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:390: error: class, interface, or enum expected
+        matchStart = 0;
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:391: error: class, interface, or enum expected
+        matchEnd = 0;
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:393: error: class, interface, or enum expected
+        startState = 21;
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:394: error: class, interface, or enum expected
+    }
+    ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:408: error: class, interface, or enum expected
+        case LEXICAL_STATE_COMMENT: startState = 0; break;
+                                                    ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:409: error: class, interface, or enum expected
+        case LEXICAL_STATE_DOCTAG: startState = 4; break;
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:409: error: class, interface, or enum expected
+        case LEXICAL_STATE_DOCTAG: startState = 4; break;
+                                                   ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:410: error: class, interface, or enum expected
+        case LEXICAL_STATE_DOC: startState = 7; break;
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:410: error: class, interface, or enum expected
+        case LEXICAL_STATE_DOC: startState = 7; break;
+                                                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:411: error: class, interface, or enum expected
+        case LEXICAL_STATE_INITIAL: startState = 21; break;
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:411: error: class, interface, or enum expected
+        case LEXICAL_STATE_INITIAL: startState = 21; break;
+                                                     ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:412: error: class, interface, or enum expected
+        default:
+               ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:414: error: class, interface, or enum expected
+        }
+        ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:417: error: class, interface, or enum expected
+    }
+    ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:430: error: class, interface, or enum expected
+    }
+    ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:439: error: class, interface, or enum expected
+    }
+    ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:452: error: class, interface, or enum expected
+    public Token getNextToken() {
+           ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:457: error: class, interface, or enum expected
+            int iterator = dot;
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:458: error: class, interface, or enum expected
+            int matchState = -1;
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:459: error: class, interface, or enum expected
+            int matchPosition = 0;
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:461: error: class, interface, or enum expected
+            do {
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:464: error: class, interface, or enum expected
+                curState = TRANSITION_TABLE[curState][curChar >= 127 ?
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:467: error: class, interface, or enum expected
+                if (curState == -1) {
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:469: error: class, interface, or enum expected
+                }
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:473: error: class, interface, or enum expected
+                    matchPosition = iterator;
+                    ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:474: error: class, interface, or enum expected
+                }
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:478: error: class, interface, or enum expected
+            if (matchState != -1) {
+            ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:481: error: class, interface, or enum expected
+                matchStart = dot;
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:482: error: class, interface, or enum expected
+                matchEnd = endPosition;
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:483: error: class, interface, or enum expected
+                dot = endPosition;
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:485: error: class, interface, or enum expected
+                switch(ACTION_MAP[matchState]) {
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:487: error: class, interface, or enum expected
+                case 1: commentText(); continue;
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:487: error: class, interface, or enum expected
+                case 1: commentText(); continue;
+                                       ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:488: error: class, interface, or enum expected
+                case 2: return endTag();
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:489: error: class, interface, or enum expected
+                case 3: doctagText(); continue;
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:489: error: class, interface, or enum expected
+                case 3: doctagText(); continue;
+                                      ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:490: error: class, interface, or enum expected
+                case 4: return endDoc();
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:491: error: class, interface, or enum expected
+                case 5: return startTag();
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:492: error: class, interface, or enum expected
+                case 6: docText(); continue;
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:492: error: class, interface, or enum expected
+                case 6: docText(); continue;
+                                   ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:493: error: class, interface, or enum expected
+                case 7: return createLineComment();
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:494: error: class, interface, or enum expected
+                case 8: startDoc(); continue;
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:494: error: class, interface, or enum expected
+                case 8: startDoc(); continue;
+                                    ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:495: error: class, interface, or enum expected
+                case 9: startMultilineComment(); continue;
+                ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:495: error: class, interface, or enum expected
+                case 9: startMultilineComment(); continue;
+                                                 ^
+/home/jdugan/projects/syntaxfx/src/main/java/syntaxfx/lexers/JavaLexer.java:496: error: class, interface, or enum expected
+                case 10: return createString();
+                ^
+100 errors
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 645ms
