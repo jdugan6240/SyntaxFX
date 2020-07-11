@@ -31,6 +31,7 @@ public class Demo extends Application {
         area = new SyntaxArea();
 
         MenuBar menuBar = new MenuBar();
+        menuBar.setUseSystemMenuBar(true);
         Menu menuLang = new Menu("Language");
         menuBar.getMenus().addAll(menuLang);
 

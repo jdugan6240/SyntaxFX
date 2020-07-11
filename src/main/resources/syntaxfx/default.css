@@ -31,6 +31,14 @@
 .number {
     -fx-fill: red;
 }
+.function {
+    -fx-fill: magenta;
+    -fx-font-weight: bold;
+}
+.member_var {
+    -fx-fill: blue;
+    -fx-font-weight: bold;
+}
 .operator {
     -fx-fill: darkblue;
     -fx-font-weight: bold;

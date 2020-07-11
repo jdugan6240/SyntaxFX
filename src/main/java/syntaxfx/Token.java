@@ -12,7 +12,9 @@ public class Token {
     public final static int DOC_COMMENT_TAG = 7;
     public final static int TYPE = 8;
     public final static int NUMBER = 9;
-    public final static int OTHER = 10;
+    public final static int FUNCTION = 10;
+    public final static int MEMBER_VAR = 11;
+    public final static int OTHER = 12;
 
     private int tokenType, start, end;
 

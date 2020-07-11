@@ -46,7 +46,7 @@ public class SyntaxArea extends CodeArea {
     private StyleSpans<Collection<String>> computeHighlighting(String text) {
         //Initialize the lexer
         lexer.setString(text);
-        int lastTokenEnd= 0;
+        int lastTokenEnd = 0;
         StyleSpansBuilder<Collection<String>> spansBuilder = new StyleSpansBuilder<Collection<String>>();
         //While we continue to get tokens, add their style
         Token tok = lexer.getNextToken();
@@ -64,6 +64,8 @@ public class SyntaxArea extends CodeArea {
                 case Token.DOC_COMMENT_TAG: styleClass = "doc_comment_tag"; break;
                 case Token.TYPE: styleClass = "type"; break;
                 case Token.NUMBER: styleClass = "number"; break;
+                case Token.FUNCTION: styleClass = "function"; break;
+                case Token.MEMBER_VAR: styleClass = "member_var"; break;
                 default: styleClass = "other";
             }
             //First, make the style of any non-tokenized text before this token plain
@@ -78,6 +80,12 @@ public class SyntaxArea extends CodeArea {
         //Make the style of any remaining text plain
         if (text.length() - lastTokenEnd > 0)
             spansBuilder.add(Collections.emptyList(), text.length() - lastTokenEnd);
+        //If there's no spans in the spansBuilder when create() is called, an exception is thrown.
+        //This happens when there's no text in the SyntaxArea.
+        //To avoid this, we simply create a zero-length span.
+        if (lastTokenEnd == 0)
+            spansBuilder.add(Collections.emptyList(), 0);
+
         return spansBuilder.create();
     }
 
