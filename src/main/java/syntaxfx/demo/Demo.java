@@ -23,6 +23,7 @@ import syntaxfx.SyntaxArea;
 import syntaxfx.Lexer;
 
 import syntaxfx.lexers.JavaLexer;
+import syntaxfx.lexers.PythonLexer;
 
 public class Demo extends Application {
     SyntaxArea area = null;
@@ -46,8 +47,18 @@ public class Demo extends Application {
             }
         });
 
-        menuLang.getItems().addAll(java);
+        menuLang.getItems().add(java);
 
+
+        RadioMenuItem python = new RadioMenuItem("Python");
+        python.setToggleGroup(langGroup);
+        python.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                setLanguage("PYTHON");
+            }
+        });
+
+        menuLang.getItems().add(python);
         Scene scene = new Scene(new BorderPane());
         ((BorderPane)scene.getRoot()).setTop(menuBar);
         ((BorderPane)scene.getRoot()).setCenter(new VirtualizedScrollPane(area));
@@ -73,6 +84,14 @@ public class Demo extends Application {
                 }
                 //InputStream stream = getClass().getResourceAsStream("/syntaxfx/demo/Demo.java")
                 //lines = Source.fromInputStream(stream).getLines
+                break;
+            case "PYTHON":
+                lexer = new PythonLexer();
+                try {
+                    lines = Files.lines(Paths.get(Demo.class.getResource("/syntaxfx/demo/Demo.py").toURI()));
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
                 break;
         }
         if (lexer != null && lines != null) {
