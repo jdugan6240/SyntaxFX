@@ -22,8 +22,7 @@ import org.fxmisc.flowless.VirtualizedScrollPane;
 import syntaxfx.SyntaxArea;
 import syntaxfx.Lexer;
 
-import syntaxfx.lexers.JavaLexer;
-import syntaxfx.lexers.PythonLexer;
+import syntaxfx.lexers.*;
 
 public class Demo extends Application {
     SyntaxArea area = null;
@@ -38,6 +37,16 @@ public class Demo extends Application {
 
         ToggleGroup langGroup = new ToggleGroup();
 
+        RadioMenuItem c = new RadioMenuItem("C");
+        c.setToggleGroup(langGroup);
+        c.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                setLanguage("C");
+            }
+        });
+
+        menuLang.getItems().add(c);
+        
         RadioMenuItem java = new RadioMenuItem("Java");
         java.setSelected(true);
         java.setToggleGroup(langGroup);
@@ -75,6 +84,15 @@ public class Demo extends Application {
         //Iterator<String> lines = null;
         Stream<String> lines = null;
         switch (language) {
+
+            case "C":
+                lexer = new CLexer();
+                try {
+                    lines = Files.lines(Paths.get(Demo.class.getResource("/syntaxfx/demo/Demo.c").toURI()));
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+                break;
             case "JAVA":
                 lexer = new JavaLexer();
                 try {
@@ -82,8 +100,6 @@ public class Demo extends Application {
                 } catch (IOException | URISyntaxException ex) {
                     ex.printStackTrace();
                 }
-                //InputStream stream = getClass().getResourceAsStream("/syntaxfx/demo/Demo.java")
-                //lines = Source.fromInputStream(stream).getLines
                 break;
             case "PYTHON":
                 lexer = new PythonLexer();
