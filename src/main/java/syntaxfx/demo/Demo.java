@@ -46,7 +46,17 @@ public class Demo extends Application {
         });
 
         menuLang.getItems().add(c);
-        
+
+        RadioMenuItem cpp = new RadioMenuItem("C++");
+        cpp.setToggleGroup(langGroup);
+        cpp.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                setLanguage("C++");
+            }
+        });
+
+        menuLang.getItems().add(cpp);
+                
         RadioMenuItem java = new RadioMenuItem("Java");
         java.setSelected(true);
         java.setToggleGroup(langGroup);
@@ -93,7 +103,15 @@ public class Demo extends Application {
                     ex.printStackTrace();
                 }
                 break;
-            case "JAVA":
+            case "C++":
+                lexer = new CppLexer();
+                try {
+                    lines = Files.lines(Paths.get(Demo.class.getResource("/syntaxfx/demo/Demo.cpp").toURI()));
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+                break;
+             case "JAVA":
                 lexer = new JavaLexer();
                 try {
                     lines = Files.lines(Paths.get(Demo.class.getResource("/syntaxfx/demo/Demo.java").toURI()));
