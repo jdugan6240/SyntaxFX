@@ -1,6 +1,0 @@
-syntaxfx/demo/Demo.java
- syntaxfx.demo.Demo
- syntaxfx.demo.Demo$1
- syntaxfx.demo.Demo$2
- syntaxfx.demo.Demo$3
- syntaxfx.demo.Demo$4

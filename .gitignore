@@ -1,5 +1,5 @@
-build/*
-bin/*
+syntaxfx/build/*
+syntaxfx-demo/build/*
 .settings/
 .classpath
 .project
@@ -10,14 +10,6 @@ dist/*
 target/
 lib_managed/
 src_managed/
-project/metals.sbt
-project/boot/
-project/plugins/project/
 .history
 .cache
 .lib/
-
-.metals/*
-.bloop/*
-
-project/metals.sbt
