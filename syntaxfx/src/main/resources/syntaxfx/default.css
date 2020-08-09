@@ -1,0 +1,52 @@
+.keyword {
+    -fx-fill: purple;
+    -fx-font-weight: bold;
+}
+.keyword2 {
+    -fx-fill: blue;
+}
+.identifier {
+    -fx-fill: black;
+}
+.string {
+    -fx-fill: darkorange;
+}
+.comment {
+	-fx-fill: green;
+    -fx-font-style: italic;
+}
+.doc_comment {
+    -fx-fill: #00AAAA;
+    -fx-font-style: italic;
+}
+.doc_comment_tag {
+    -fx-fill: darkcyan;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+}
+.type {
+    -fx-fill: blue;
+    -fx-font-weight: bold;
+}
+.number {
+    -fx-fill: red;
+}
+.function {
+    -fx-fill: magenta;
+    -fx-font-weight: bold;
+}
+.member_var {
+    -fx-fill: blue;
+    -fx-font-weight: bold;
+}
+.operator {
+    -fx-fill: darkblue;
+    -fx-font-weight: bold;
+}
+.preprocessor {
+	-fx-fill: blue;
+	-fx-font-weight: bold;
+}
+.paragraph-box:has-caret {
+    -fx-background-color: #f2f9fc;
+}
