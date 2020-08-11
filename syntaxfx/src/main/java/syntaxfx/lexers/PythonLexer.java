@@ -11,6 +11,10 @@ import java.util.Stack;
  * @option functionality = all- setString+ getMatchStart+ getMatchEnd+ lexicalState+
  * @option visibility = all- stringMethods+ scanMethods+
  * @option internal = setString+
+ * @option logo = disabled
+ * @option statistics = disabled
+ * @option headings = disabled
+ * @option javadoc = all-
  * 
  * @macro DecimalInteger = 0 | [1-9][0-9]* 
  * @macro HexInteger     = 0 [xX] [0-9a-fA-F]* 
@@ -107,36 +111,6 @@ public class PythonLexer extends Lexer {
 
     //%%LEX-MAIN-START%%
     
-    //================================================
-    //     _                      _____ _             
-    //    / \   _ __  _ __   ___ |  ___| | ___ _  __  
-    //   / _ \ |  _ \|  _ \ / _ \| |_  | |/ _ \ \/ /  
-    //  / ___ \| | | | | | | (_) |  _| | |  __/>  <   
-    // /_/   \_\_| |_|_| |_|\___/|_|   |_|\___/_/\_\  
-    //                                                
-    //================================================
-    
-    /*************************************************
-     *             Generation Statistics             *
-     * * * * * * * * * * * * * * * * * * * * * * * * *
-     *                                               *
-     * Rules:           14                           *
-     * Lookaheads:      0                            *
-     * Alphabet length: 67                           *
-     * NFA states:      278                          *
-     * DFA states:      120                          *
-     * Static size:     74 KB                        *
-     * Instance size:   28 Bytes                     *
-     *                                               *
-     ************************************************/
-    
-    //=================
-    // Table Constants
-    //=================
-    
-    /**
-     * Maps Unicode characters to DFA input symbols.
-     */
     private static final byte[] CHARACTER_MAP = createCharacterMap(
     "\34\t\4\1\1\1\4\2\1\1\34\16\4\5\21\1\3\1\5\1\37\1\30\1\26\1" +
     "\2\1\6\1\7\1\31\1\35\1\4\1\36\1\r\1\32\1\101\1\102\1\73\6\63\2" +
@@ -230,9 +204,6 @@ public class PythonLexer extends Lexer {
     "\34\n\4\7\37\32\4\4\37\1\4\1\37\32\4\13\37\131\4\3\37\6\4\2" +
     "\37\6\4\2\37\6\4\2\37\3\4\3\37\2\4\3\37\2\4\22\34\3\4\4");
     
-    /**
-     * The transition table of the DFA.
-     */
     private static final byte[][] TRANSITION_TABLE = createTransitionTable(
     "\0\3\2\1\0\77\0\103\0\103\3\3\5\1\3\77\0\3\1\1\0\77\167\1\0\1\167\101" +
     "\7\1\0\1\7\101\0\103\0\103\0\103\0\34\21\1\0\2\21\44\0\34\21\1\0\2\21\44" +
@@ -290,97 +261,22 @@ public class PythonLexer extends Lexer {
     "\n\1\164\100\164\1\0\1\164\101\6\1\167\2\170\1\167\77\6\1\167\2\t\1" +
     "\167\77\0\3\b\1\0\77");
     
-    /**
-     * Maps state numbers to action numbers.
-     */
     private static final byte[] ACTION_MAP = createActionMap(
     "\0\1\1\1\2\1\0\1\2\1\0\1\3\1\4\1\5\1\6\1\7\1\b\1\t\1\n\1" +
     "\13\1\f\1\r\1\16\1\0\1\t\1\13\1\0\1\n\1\13\1\n\1\13\1" +
     "\0\1\n\3\r\44\b\1\r\57\16\1\0\2\16\1\0\1\5\1");
     
-    //=========================
-    // Lexical State Constants
-    //=========================
-    
-    /**
-     * The ordinal number of the lexical state "DOC".
-     */
     private static final int LEXICAL_STATE_DOC = 0;
-    
-    /**
-     * The ordinal number of the lexical state "INITIAL".
-     */
     private static final int LEXICAL_STATE_INITIAL = 1;
     
-    //===============
-    // String Fields
-    //===============
-    
-    /**
-     * The current string to be scanned.
-     */
     private String string = "";
-    
-    //===============
-    // Region Fields
-    //===============
-    
-    /**
-     * The end of the scan region.
-     */
     private int regionEnd;
-    
-    //============
-    // Dot Fields
-    //============
-    
-    /**
-     * The start position of the next scan.
-     */
     private int dot;
-    
-    //======================
-    // Lexical State Fields
-    //======================
-    
-    /**
-     * The current lexical state.
-     */
     private int lexicalState = LEXICAL_STATE_INITIAL;
-    
-    //==============
-    // Match Fields
-    //==============
-    
-    /**
-     * The start of the last match.
-     */
     private int matchStart;
-    
-    /**
-     * The end of the last match.
-     */
     private int matchEnd;
-    
-    //===============
-    // Helper Fields
-    //===============
-    
-    /**
-     * The start state of the DFA.
-     */
     private int startState = 18;
     
-    //===============
-    // Table Methods
-    //===============
-    
-    /**
-     * Creates the character map of the scanner.
-     * 
-     * @param characterMapData The compressed data of the character map.
-     * @return The character map of the scanner.
-     */
     private static byte[] createCharacterMap(String characterMapData) {
         byte[] characterMap = new byte[65536];
         int length = characterMapData.length();
@@ -398,12 +294,6 @@ public class PythonLexer extends Lexer {
         return characterMap;
     }
     
-    /**
-     * Creates the transition table of the scanner.
-     * 
-     * @param transitionTableData The compressed data of the transition table.
-     * @return The transition table of the scanner.
-     */
     private static byte[][] createTransitionTable(String transitionTableData) {
         byte[][] transitionTable = new byte[120][67];
         int length = transitionTableData.length();
@@ -427,12 +317,6 @@ public class PythonLexer extends Lexer {
         return transitionTable;
     }
     
-    /**
-     * Creates the action map of the scanner.
-     * 
-     * @param actionMapData The compressed data of the action map.
-     * @return The action map of the scanner.
-     */
     private static byte[] createActionMap(String actionMapData) {
         byte[] actionMap = new byte[120];
         int length = actionMapData.length();
@@ -450,16 +334,6 @@ public class PythonLexer extends Lexer {
         return actionMap;
     }
     
-    //================
-    // String Methods
-    //================
-    
-    /**
-     * Sets the string to be scanned. The scan region is set to the entire
-     * string.
-     * 
-     * @param string The new string to be scanned.
-     */
     public void setStringInternal(String string) {
         this.string = string != null ? string : "";
         
@@ -474,16 +348,6 @@ public class PythonLexer extends Lexer {
         startState = 18;
     }
     
-    //=======================
-    // Lexical State Methods
-    //=======================
-    
-    /**
-     * Sets the current lexical state.
-     * 
-     * @param lexicalState The new lexical state.
-     * @throws IllegalArgumentException If the specified state is invalid
-     */
     private void setLexicalState(int lexicalState) {
         switch(lexicalState) {
         case LEXICAL_STATE_DOC: startState = 3; break;
@@ -495,39 +359,14 @@ public class PythonLexer extends Lexer {
         this.lexicalState = lexicalState;
     }
     
-    //===============
-    // Match Methods
-    //===============
-    
-    /**
-     * Returns the start (inclusive) of the last match.
-     * 
-     * @return The start (inclusive) of the last match.
-     */
     private int getMatchStart() {
         return matchStart;
     }
     
-    /**
-     * Returns the end (exclusive) of the last match.
-     * 
-     * @return The end (exclusive) of the last match.
-     */
     private int getMatchEnd() {
         return matchEnd;
     }
     
-    //==============
-    // Scan Methods
-    //==============
-    
-    /**
-     * Performs at the current position the next step of the lexical analysis
-     * and returns the result.
-     * 
-     * @return The result of the next step of the lexical analysis.
-     * @throws IllegalStateException If a lexical error occurs
-     */
     public Token getNextToken() {
         while (dot < regionEnd) {
             

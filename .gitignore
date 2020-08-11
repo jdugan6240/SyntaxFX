@@ -1,5 +1,7 @@
 syntaxfx/build/*
 syntaxfx-demo/build/*
+syntaxfx/bin/*
+syntaxfx-demo/bin/*
 .settings/
 .classpath
 .project

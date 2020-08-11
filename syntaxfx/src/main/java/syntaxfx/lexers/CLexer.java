@@ -6,11 +6,15 @@ import syntaxfx.Token;
 import java.util.Stack;
 
 /**
- * The CLexer class represents a lexer for the Java programming language.
+ * The CLexer class represents a lexer for the C programming language.
  * 
  * @option functionality = all- setString+ getMatchStart+ getMatchEnd+ lexicalState+
  * @option visibility = all- stringMethods+ scanMethods+
  * @option internal = setString+
+ * @option logo = disabled
+ * @option statistics = disabled
+ * @option headings = disabled
+ * @option javadoc = all-
  * 
  * @macro DecimalInteger = 0 | [1-9][0-9]* 
  * @macro HexInteger     = 0 [xX] [0-9a-fA-F]* 
@@ -110,36 +114,6 @@ public class CLexer extends Lexer {
 
     //%%LEX-MAIN-START%%
     
-    //================================================
-    //     _                      _____ _             
-    //    / \   _ __  _ __   ___ |  ___| | ___ _  __  
-    //   / _ \ |  _ \|  _ \ / _ \| |_  | |/ _ \ \/ /  
-    //  / ___ \| | | | | | | (_) |  _| | |  __/>  <   
-    // /_/   \_\_| |_|_| |_|\___/|_|   |_|\___/_/\_\  
-    //                                                
-    //================================================
-    
-    /*************************************************
-     *             Generation Statistics             *
-     * * * * * * * * * * * * * * * * * * * * * * * * *
-     *                                               *
-     * Rules:           15                           *
-     * Lookaheads:      0                            *
-     * Alphabet length: 67                           *
-     * NFA states:      295                          *
-     * DFA states:      130                          *
-     * Static size:     84 KB                        *
-     * Instance size:   28 Bytes                     *
-     *                                               *
-     ************************************************/
-    
-    //=================
-    // Table Constants
-    //=================
-    
-    /**
-     * Maps Unicode characters to DFA input symbols.
-     */
     private static final byte[] CHARACTER_MAP = createCharacterMap(
     "\34\t\4\1\1\1\4\2\1\1\34\16\4\5\23\1\3\1\7\1\37\1\32\1\30\1" +
     "\2\1\b\1\t\1\5\1\35\1\4\1\36\1\17\1\6\1\101\1\102\1\74\6\63\2" +
@@ -233,9 +207,6 @@ public class CLexer extends Lexer {
     "\34\n\4\7\37\32\4\4\37\1\4\1\37\32\4\13\37\131\4\3\37\6\4\2" +
     "\37\6\4\2\37\6\4\2\37\3\4\3\37\2\4\3\37\2\4\22\34\3\4\4");
     
-    /**
-     * The transition table of the DFA.
-     */
     private static final short[][] TRANSITION_TABLE = createTransitionTable(
     "\3\5\4\1\3\75\0\103\0\103\0\6\2\1\0\74\201\1\0\1\201\101\6\1\0\1\6\101" +
     "\0\103\b\1\0\1\b\101\0\103\0\103\0\34\21\1\0\2\21\44\0\34\21\1\0\2\21\44" +
@@ -296,97 +267,22 @@ public class CLexer extends Lexer {
     "\21\33\f\1\21\3\177\1\176\1\n\1\176\100\177\1\176\1\n\1\176\100\176\1" +
     "\0\1\176\101\5\1\201\2\t\1\201\77\5\1\201\2\t\1\201\77\0\5\7\1\6\1\0\74");
     
-    /**
-     * Maps state numbers to action numbers.
-     */
     private static final byte[] ACTION_MAP = createActionMap(
     "\0\1\1\1\2\2\0\1\3\1\4\1\5\1\6\1\7\1\b\1\t\1\n\1\13\1" +
     "\f\1\r\1\16\1\17\1\0\1\n\1\f\1\0\1\13\1\f\1\13\1\f\1\0\1" +
     "\13\3\16\73\t\1\16\"\17\1\0\2\17\1\0\1\n\1");
     
-    //=========================
-    // Lexical State Constants
-    //=========================
-    
-    /**
-     * The ordinal number of the lexical state "COMMENT".
-     */
     private static final int LEXICAL_STATE_COMMENT = 0;
-    
-    /**
-     * The ordinal number of the lexical state "INITIAL".
-     */
     private static final int LEXICAL_STATE_INITIAL = 1;
     
-    //===============
-    // String Fields
-    //===============
-    
-    /**
-     * The current string to be scanned.
-     */
     private String string = "";
-    
-    //===============
-    // Region Fields
-    //===============
-    
-    /**
-     * The end of the scan region.
-     */
     private int regionEnd;
-    
-    //============
-    // Dot Fields
-    //============
-    
-    /**
-     * The start position of the next scan.
-     */
     private int dot;
-    
-    //======================
-    // Lexical State Fields
-    //======================
-    
-    /**
-     * The current lexical state.
-     */
     private int lexicalState = LEXICAL_STATE_INITIAL;
-    
-    //==============
-    // Match Fields
-    //==============
-    
-    /**
-     * The start of the last match.
-     */
     private int matchStart;
-    
-    /**
-     * The end of the last match.
-     */
     private int matchEnd;
-    
-    //===============
-    // Helper Fields
-    //===============
-    
-    /**
-     * The start state of the DFA.
-     */
     private int startState = 18;
     
-    //===============
-    // Table Methods
-    //===============
-    
-    /**
-     * Creates the character map of the scanner.
-     * 
-     * @param characterMapData The compressed data of the character map.
-     * @return The character map of the scanner.
-     */
     private static byte[] createCharacterMap(String characterMapData) {
         byte[] characterMap = new byte[65536];
         int length = characterMapData.length();
@@ -404,12 +300,6 @@ public class CLexer extends Lexer {
         return characterMap;
     }
     
-    /**
-     * Creates the transition table of the scanner.
-     * 
-     * @param transitionTableData The compressed data of the transition table.
-     * @return The transition table of the scanner.
-     */
     private static short[][] createTransitionTable(String transitionTableData) {
         short[][] transitionTable = new short[130][67];
         int length = transitionTableData.length();
@@ -433,12 +323,6 @@ public class CLexer extends Lexer {
         return transitionTable;
     }
     
-    /**
-     * Creates the action map of the scanner.
-     * 
-     * @param actionMapData The compressed data of the action map.
-     * @return The action map of the scanner.
-     */
     private static byte[] createActionMap(String actionMapData) {
         byte[] actionMap = new byte[130];
         int length = actionMapData.length();
@@ -456,16 +340,6 @@ public class CLexer extends Lexer {
         return actionMap;
     }
     
-    //================
-    // String Methods
-    //================
-    
-    /**
-     * Sets the string to be scanned. The scan region is set to the entire
-     * string.
-     * 
-     * @param string The new string to be scanned.
-     */
     public void setStringInternal(String string) {
         this.string = string != null ? string : "";
         
@@ -480,16 +354,6 @@ public class CLexer extends Lexer {
         startState = 18;
     }
     
-    //=======================
-    // Lexical State Methods
-    //=======================
-    
-    /**
-     * Sets the current lexical state.
-     * 
-     * @param lexicalState The new lexical state.
-     * @throws IllegalArgumentException If the specified state is invalid
-     */
     private void setLexicalState(int lexicalState) {
         switch(lexicalState) {
         case LEXICAL_STATE_COMMENT: startState = 0; break;
@@ -501,39 +365,14 @@ public class CLexer extends Lexer {
         this.lexicalState = lexicalState;
     }
     
-    //===============
-    // Match Methods
-    //===============
-    
-    /**
-     * Returns the start (inclusive) of the last match.
-     * 
-     * @return The start (inclusive) of the last match.
-     */
     private int getMatchStart() {
         return matchStart;
     }
     
-    /**
-     * Returns the end (exclusive) of the last match.
-     * 
-     * @return The end (exclusive) of the last match.
-     */
     private int getMatchEnd() {
         return matchEnd;
     }
     
-    //==============
-    // Scan Methods
-    //==============
-    
-    /**
-     * Performs at the current position the next step of the lexical analysis
-     * and returns the result.
-     * 
-     * @return The result of the next step of the lexical analysis.
-     * @throws IllegalStateException If a lexical error occurs
-     */
     public Token getNextToken() {
         while (dot < regionEnd) {
             
