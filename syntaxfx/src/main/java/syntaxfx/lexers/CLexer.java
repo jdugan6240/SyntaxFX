@@ -104,6 +104,17 @@ public class CLexer extends Lexer {
             else
                 break;
         }
+        //If the previous character that wasn't whitespace was a "." or a "->", it's a member variable
+        for (int i = matchStart - 1; i > 0; --i) {
+            if (Character.isWhitespace(this.string.charAt(i)))
+                continue;
+            else if (this.string.charAt(i) == '.')
+                return new Token(Token.MEMBER_VAR, matchStart, matchEnd);
+            else if (i > 0 && this.string.charAt(i) == '>' && this.string.charAt(i - 1) == '-')
+                return new Token(Token.MEMBER_VAR, matchStart, matchEnd);
+            else
+                break;
+        }
         return new Token(Token.IDENTIFIER, matchStart, matchEnd);
     }
     
