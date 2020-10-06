@@ -15,7 +15,8 @@ public class Token {
     public final static int FUNCTION = 10;
     public final static int MEMBER_VAR = 11;
     public final static int PREPROCESSOR = 12;
-    public final static int OTHER = 13;
+    public final static int NAMESPACE = 13;
+    public final static int OTHER = 14;
 
     private int tokenType, start, end;
 

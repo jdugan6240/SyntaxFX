@@ -105,7 +105,7 @@ public class CppLexer extends Lexer {
                 break;
         }
         //If the previous character that wasn't whitespace was a "." or a "->", it's a member variable
-        for (int i = matchStart - 1; i > 0; --i) {
+        for (int i = matchStart - 1; i >= 0; --i) {
             if (Character.isWhitespace(this.string.charAt(i)))
                 continue;
             else if (this.string.charAt(i) == '.')
@@ -115,6 +115,15 @@ public class CppLexer extends Lexer {
             //If the previous characters were a "::", it's a namespace member
             else if (i > 0 && this.string.charAt(i) == ':' && this.string.charAt(i - 1) == ':')
                 return new Token(Token.MEMBER_VAR, matchStart, matchEnd);
+            else
+                break;
+        }
+        //If the next characters that aren't whitespace are a "::", then it's a namespace
+        for (int i = matchEnd; i < this.string.length(); ++i) {
+            if (Character.isWhitespace(this.string.charAt(i)))
+                continue;
+            else if (i < this.string.length() - 1 && this.string.charAt(i) == ':' && this.string.charAt(i + 1) == ':')
+                return new Token(Token.NAMESPACE, matchStart, matchEnd);
             else
                 break;
         }

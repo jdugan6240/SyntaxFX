@@ -66,6 +66,7 @@ public class SyntaxArea extends CodeArea {
                 case Token.NUMBER: styleClass = "number"; break;
                 case Token.FUNCTION: styleClass = "function"; break;
                 case Token.MEMBER_VAR: styleClass = "member_var"; break;
+                case Token.NAMESPACE: styleClass = "namespace"; break;
                 case Token.PREPROCESSOR: styleClass = "preprocessor"; break;
                 default: styleClass = "other";
             }
